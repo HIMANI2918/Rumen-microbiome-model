@@ -21,6 +21,9 @@ HSData <- read.csv("./Absence_Presence.csv", header=TRUE)
 
 #Boruta algorithm will be trained on the whole dataset for best feature selection
 HSData$Response=as.factor(HSData$Response)
+HSData$Animal_Age=as.factor(HSData$Animal_Age)
+HSData$Lactation_Stage=as.factor(HSData$Lactation_Stage)
+HSData$Study_ID=as.factor(HSData$Study_ID)
 HSData$Sequencing_Depths=as.numeric(HSData$Sequencing_Depths)
 #convert Presence_Absence to factors
 HSData[,1:985]=lapply(HSData[,1:985],factor)
