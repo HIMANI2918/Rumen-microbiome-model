@@ -19,16 +19,19 @@ library(parallelMap)
 Train <- read.csv("./Train_AP.csv", header=TRUE)
 Test <- read.csv("./Test_AP.csv", header=TRUE)
 Train$Response=as.factor(Train$Response)
+Train$Animal_Age=as.factor(Train$Animal_Age)
+Train$Lactation_Stage=as.factor(Train$Lactation_Stage)
+Train$Study_ID=as.factor(Train$Study_ID)
 Train$Sequencing_Depths=as.numeric(Train$Sequencing_Depths)
-#convert Presence_Absence to factors
-Train[,1:985]=lapply(Train[,1:985],factor)
 str(Train)
 
 Test$Response=as.factor(Test$Response)
+Test$Animal_Age=as.factor(Test$Animal_Age)
+Test$Lactation_Stage=as.factor(Test$Lactation_Stage)
+Test$Study_ID=as.factor(Test$Study_ID)
 Test$Sequencing_Depths=as.numeric(Test$Sequencing_Depths)
-#convert Presence_Absence to factors
-Test[,1:985]=lapply(Test[,1:985],factor)
-str(Test)
+str(Test) 
+
 
 HSTrain <- makeClassifTask(data=Train, target="Response")
 HSTest <- makeClassifTask(data=Test, target="Response")
